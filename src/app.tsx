@@ -4,10 +4,13 @@ import {PokemonListView} from "./views/pokemon-list/pokemon-list.view";
 import {StarWarsMovieListView} from "./views/star-wars-movie-list/star-wars-movie-list.view";
 import {Header} from "./components/header";
 import {GlobalStyles} from "./app.styles";
+import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
+
+const queryClient = new QueryClient()
 
 function App() {
     return (
-        <>
+        <QueryClientProvider client={queryClient}>
             <GlobalStyles/>
             <BrowserRouter>
                 <Header/>
@@ -16,7 +19,7 @@ function App() {
                     <Route path="starwars" element={<StarWarsMovieListView/>}/>
                 </Routes>
             </BrowserRouter>
-        </>
+        </QueryClientProvider>
     );
 }
 
